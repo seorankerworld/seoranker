@@ -200,8 +200,8 @@ strong {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.96);
+  z-index: 10000;
+  background-color: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
   transition: box-shadow var(--transition-normal);
@@ -1244,6 +1244,161 @@ strong {
   padding: 0 1.5rem 1.5rem;
 }
 
+/* Service Visual Showcase & Media Elements */
+.service-media-showcase {
+  margin: 2.5rem 0 3rem 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
+  background: var(--color-surface);
+  position: relative;
+}
+
+.service-media-showcase img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .service-media-showcase img {
+    height: 240px;
+  }
+}
+
+.service-media-caption {
+  padding: 1rem 1.5rem;
+  background: var(--color-surface-subtle);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.service-media-caption strong {
+  color: var(--color-text-main);
+}
+
+/* Worldwide Service Coverage Grid */
+.worldwide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.worldwide-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.worldwide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent);
+}
+
+.worldwide-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.worldwide-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.worldwide-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.worldwide-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+/* Highlight Takeaway Box */
+.seo-takeaway-box {
+  background: linear-gradient(135deg, rgba(11, 61, 145, 0.04) 0%, rgba(13, 148, 136, 0.08) 100%);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+}
+
+.seo-takeaway-box h4 {
+  color: var(--color-primary);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.seo-takeaway-box p {
+  margin-bottom: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-text-main);
+}
+
+/* Process Flow Steps */
+.process-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.process-step-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.step-num-badge {
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
 /* Contact Page Grid */
 .contact-grid {
   display: grid;
@@ -1465,12 +1620,12 @@ strong {
 .mobile-nav-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(4px);
-  z-index: 9998;
+  z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .mobile-nav-backdrop.active {
@@ -1512,29 +1667,30 @@ body.nav-open {
     left: 0;
     right: 0;
     width: 100%;
-    height: calc(100vh - 4.5rem);
-    background-color: var(--color-surface);
+    max-height: calc(100vh - 4.5rem);
+    height: calc(100dvh - 4.5rem);
+    background-color: #ffffff;
     flex-direction: column;
     align-items: stretch;
-    padding: 1.5rem 1.25rem 3rem 1.25rem;
+    padding: 1.25rem 1.25rem 3rem 1.25rem;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: none;
     border-top: 1px solid var(--color-border);
-    z-index: 9999;
+    z-index: 10001;
     box-shadow: var(--shadow-2xl);
-    gap: 0.5rem;
+    gap: 0.35rem;
   }
 
   .nav-links.mobile-open {
-    display: flex;
+    display: flex !important;
     animation: mobileMenuSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   @keyframes mobileMenuSlideDown {
     from {
       opacity: 0;
-      transform: translateY(-12px);
+      transform: translateY(-10px);
     }
     to {
       opacity: 1;
@@ -1577,7 +1733,7 @@ body.nav-open {
     transform: none;
     box-shadow: none;
     border: none;
-    border-left: 2px solid var(--color-accent);
+    border-left: 3px solid var(--color-accent);
     margin-left: 0.5rem;
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
@@ -1587,15 +1743,15 @@ body.nav-open {
     display: none;
   }
 
-  .nav-item.dropdown-open .dropdown-menu,
-  .nav-item:hover .dropdown-menu {
-    display: block;
+  .nav-item.dropdown-open .dropdown-menu {
+    display: block !important;
   }
 
   .dropdown-item a {
     padding: 0.65rem 0.75rem;
     font-size: 0.95rem;
     border-radius: var(--radius-sm);
+    color: var(--color-text-main);
   }
 
   .dropdown-item a:hover {
@@ -1605,12 +1761,12 @@ body.nav-open {
 
   /* Mobile Nav Extra Contact Info & Action */
   .mobile-nav-cta {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
     border-top: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .mobile-contact-pill {
